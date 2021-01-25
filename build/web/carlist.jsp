@@ -4,6 +4,7 @@
     Author     : pharveish
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="bean.Car" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,7 +18,7 @@
         </head>
         <body>
                 <%@include file="nav.jsp" %>
-                
+               
                 <div style="margin:100px; margin-top:50px">
                 <table class="table table-striped table-hover" >
                     <thead class="thead-dark">
@@ -27,10 +28,12 @@
                         <th>Type</th>
                         <th>Date Received</th>
                         <th>Rent Status</th>
+                    
                         
                     </tr>
                     </thead>
                     <tbody>
+                            
                     <c:forEach var="Car" items="${carlist}">
                         <tr>  
                             <td>${Car.getCarNo()}</td>
@@ -39,8 +42,13 @@
                             <td>${Car.getDateReceived()}</td>
                             <td>${Car.getRentStatus()}</td>
                           
+                          
                         </tr>
                     </c:forEach>
+                            
+                            
+               
+        
                     </tbody>
                 </table>
                 </div>
