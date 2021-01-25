@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/carlist.jsp</file>
             <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/controller/CarListController.java</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/rentalHistory.jsp</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/index.jsp</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/controller/RentalHistoryController.java</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/DAO/CarListDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -34,7 +34,7 @@
                           <a class="nav-link" href="CarListController">Car List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Pricing</a>
+                          <a class="nav-link" href="ToRentController">Rent Now</a>
                         </li>
                         
                       </ul>

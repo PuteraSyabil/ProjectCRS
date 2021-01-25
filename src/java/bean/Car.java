@@ -5,6 +5,10 @@
  */
 package bean;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 /**
  *
  * @author pharveish
@@ -60,6 +64,28 @@ public class Car {
         if(isRentStatus()==false){
             return "Available";
         } else return "Unavailable";
+    }
+    
+  
+    
+    public double getPrice(){
+        
+        double price;
+        if(getType().equals("Sedan")){
+            price=10.00;
+        } else if(getType().equals("Hatchback")){
+            price=10.00;
+        } else if(getType().equals("MPV")){
+            price=20.00;
+        } else if(getType().equals("SUV")){
+            price=20.00;
+        } else price=30.00;
+    
+        return price;
+    }
+    
+    public String priceString(){
+        return String.format("%.2f", getPrice());
     }
     
     
