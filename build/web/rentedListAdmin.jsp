@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
    <head>
@@ -29,26 +30,45 @@
                 <table class="table table-striped table-hover" >
                     <thead class="thead-dark">
                     <tr>
-                        <th>No</th>
+                        <th>Rent ID</th>
+                        <th>Car No.</th>
                         <th>Model</th>
                         <th>Type</th>
-                        <th>Date Received</th>
-                        <th>Rent Status</th>
+                        <th>Customer Firstname</th>
+                        <th>Customer Lastname</th>
+                        <th>Customer IC no.</th>
+                        <th>Date of Rental</th>
+                        <th>Starting time</th>
+                        <th>Duration</th>
+                        <th>Earnings</th>
                       
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="Car" items="${rentedcarlist}" varStatus="loop">
+                    <c:set var="total" value="${0}"/>
+                    <c:forEach var="Rent" items="${rentedcarlist}" varStatus="loop">
                         <tr>  
+                            <td>${Rent.getRentID()}</td>
+                            <td>${Rent.getCarNo()}</td>
+                            <td>${Rent.getModel()}</td>
+                            <td>${Rent.getType()}</td>
+                            <td>${Rent.getFirstname()}</td>
+                            <td>${Rent.getLastname()}</td>
+                            <td>${Rent.getIc()}</td>
+                            <td>${Rent.getRentDate()}</td>
+                            <td>${Rent.getRentTime()}</td>
+                            <td>${Rent.getDuration()}</td>
+                            <td>RM${Rent.getTotalPrice()}</td>
                             
-                            <td>${Car.getCarNo()}</td>
-                            <td>${Car.getModel()}</td>
-                            <td>${Car.getType()}</td>
-                            <td>${Car.getDateReceived()}</td>
-                            <td>${Car.getRentStatus()}</td>
-                             
+                          
+                             <c:set var="total" value="${total + Rent.getTotalPrice()}" />
                         </tr>
+
                     </c:forEach>
+                        <tr>                        
+                            <td colspan="10"><b>Total Earnings</b></td>
+                            <td>RM${total}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div> 

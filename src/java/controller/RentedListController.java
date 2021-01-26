@@ -8,6 +8,7 @@ package controller;
 import DAO.CarListDAO;
 import DAO.RentedCarDAO;
 import bean.Car;
+import bean.RentedBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -42,7 +43,7 @@ public class RentedListController extends HttpServlet {
        try (PrintWriter out = response.getWriter()) {
             
             RentedCarDAO carlistDAO = new RentedCarDAO();
-            ArrayList<Car> rentedcarlist = carlistDAO.getCarList();
+            ArrayList<RentedBean> rentedcarlist = carlistDAO.rentedCarList();
             request.setAttribute("rentedcarlist", rentedcarlist);
             request.getRequestDispatcher("/rentedListAdmin.jsp").forward(request, response);
             
