@@ -19,12 +19,12 @@
                     String model = request.getParameter("model");
                     String type = request.getParameter("type");
                     String sprice = request.getParameter("sprice");
-                    String price = request.getParameter("price");
+                    double price = Double.parseDouble(request.getParameter("price"));
                 %>
                 <div style="margin:100px; margin-top:50px">
                 <h2>Rent Car</h2>
                 
-                <form  method="post" action="RentCarController">
+                <form  method="post" action="rentcheckout.jsp">
                     <div class="form-group row">
                       <label for="Model" class="col-sm-2 col-form-label">Model</label>
                         <div class="col-sm-10">
@@ -34,7 +34,7 @@
                     <div class="form-group row">
                       <label for="Type" class="col-sm-2 col-form-label">Type</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" value="<%=type%>" readonly>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="type" value="<%=type%>" readonly>
                         </div>
                     </div>
                      <div class="form-group row">
