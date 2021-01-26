@@ -56,6 +56,7 @@ public class LoginController extends HttpServlet {
             {
                 HttpSession session=request.getSession(); //session is created
                 session.setAttribute("login",loginBean.getEmail()); //session name is "login" and  store username in "getUsername()" get through loginBean object
+                session.setAttribute("loginID",loginBean.getID());
                 RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp"); //redirect to welcome.jsp page
                 rd.forward(request, response);
             }

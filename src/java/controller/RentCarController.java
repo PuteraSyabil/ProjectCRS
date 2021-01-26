@@ -5,13 +5,21 @@
  */
 package controller;
 
+import DAO.AddCarDAO;
+import bean.Car;
+import bean.Rent;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Set;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,11 +40,47 @@ public class RentCarController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.println(request.getParameter("model"));
-           out.println(request.getParameter("carNo"));
-           out.println(request.getParameter("duration"));
-           out.println(request.getParameter("sprice"));
+       try (PrintWriter out = response.getWriter()) {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+            DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("HH:mm:ss"); 
+            LocalDateTime now = LocalDateTime.now();  
+            if(request.getParameter("btn_rent")!=null) //check button click event not null from register.jsp page button
+        {
+            int carNo=Integer.parseInt(request.getParameter("carNo"));
+            double duration=Double.parseDouble(request.getParameter("duration"));
+            double totalprice=Double.parseDouble(request.getParameter("total"));
+           
+            HttpSession session=request.getSession();
+            Rent rent=new Rent();
+            
+            rent.setDuration(duration);
+            rent.setTotalPrice(totalprice);
+            rent.setRentDate(dtf.format(now));
+            rent.setRentTime(dtf2.format(now));
+            rent.setFk_carNo(carNo);
+            rent.setFk_userID((Integer)session.getAttribute("loginID"));
+            
+            
+            
+            
+            RentCarDAO rentcarDAO=new RentCarDAO(); //this class contain main logic to perform function calling and database operation
+            
+            String rentCarValidate=rentcarDAO.authorizeRentCar(rent); //send registerBean object values into authorizeRegister() function in RegisterDao class
+            
+            if(rentCarValidate.equals("SUCCESS RENT CAR")) //check calling authorizeRegister() function receive "SUCCESS REGISTER" string message after redirect to index.jsp page
+            {
+                request.setAttribute("RentCarSSuccess",rentCarValidate); //apply register successfully message "RegiseterSuccessMsg"
+                RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp"); //redirect to index.jsp page
+                rd.forward(request, response);
+            }
+            else
+            {
+                request.setAttribute("RentCarFail",rentCarValidate); // apply register error message "RegiseterErrorMsg"
+                RequestDispatcher rd=request.getRequestDispatcher("rentCar.jsp"); //show error same page register.jsp page
+                rd.include(request, response);
+            }
+            
+        }
         }
     }
 

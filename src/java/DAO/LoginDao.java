@@ -21,6 +21,7 @@ public class LoginDao {
         
         String dbemail= "";
         String dbpassword="";
+        int dbid;
         String uname="root";
         String pass = "void";
         
@@ -39,6 +40,7 @@ public class LoginDao {
             
             while(rs.next())
             {
+                loginBean.setID(rs.getInt(1));
                 dbemail=rs.getString("email");
                 dbpassword=rs.getString("password");
                 
