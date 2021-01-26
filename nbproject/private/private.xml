@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/controller/RentCarController.java</file>
-            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/rentCar.jsp</file>
-            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/bean/Car.java</file>
-            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/rentalHistory.jsp</file>
-            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/welcome.jsp</file>
-            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/controller/LoginController.java</file>
-            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/DAO/CarListDAO.java</file>
-            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/toRentList.jsp</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/DAO/RentedCarDAO.java</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/controller/RentedListController.java</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/rentedListAdmin.jsp</file>
         </group>
     </open-files>
 </project-private>

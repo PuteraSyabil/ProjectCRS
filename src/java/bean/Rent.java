@@ -10,9 +10,20 @@ package bean;
  * @author pharveish
  */
 public class Rent {
+    private int rentID;
     private double duration, totalPrice;
     private int fk_carNo, fk_userID;
     private String rentDate, rentTime;
+
+    public int getRentID() {
+        return rentID;
+    }
+
+    public void setRentID(int rentID) {
+        this.rentID = rentID;
+    }
+    
+    
 
     public double getDuration() {
         return duration;
