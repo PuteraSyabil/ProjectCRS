@@ -27,7 +27,7 @@ public class RentedCarDAO {
             String dbName = "CRS_project";
             String url = "jdbc:mysql://localhost/"+dbName+"?";
             String userName = "root";
-            String password = "void";
+            String password = "root";
             String query = "select * from car where rentStatus=true;";
             
             Class.forName(driver);
