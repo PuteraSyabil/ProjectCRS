@@ -30,7 +30,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                       <ul class="navbar-nav">
                         <li class="nav-item">
-                          <a class="nav-link" href="manageUser.jsp">Manage Users</a>
+                          <a class="nav-link" href="ManageUserController">Manage Users</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="RentedListController">Car on Rent</a>

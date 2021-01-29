@@ -3,9 +3,10 @@
     Created on : Jan 19, 2021, 21:39:41 PM
     Author     : USER
 --%>
-
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="bean.User" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,35 +22,7 @@
     <body class="bg-light">
         
         <!-- Navigation -->
-        <div id="nav-placeholder">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a class="navbar-brand" href="welcome.jsp">Car Rental System</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                      <ul class="navbar-nav">
-                        <li class="nav-item">
-                          <a class="nav-link" href="welcomeAdmin.jsp">Home</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">Manage User</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="RentalHistoryController">Rental History</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        
-                      </ul>
-                    </div>
-                      <form class="form-inline" action="logoutAdmin.jsp">
-                        
-                        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
-                      </form>
-                  </nav>
-            </div>
+        <%@include file="navAdmin.jsp" %>
             <!-- Title -->
             <div class="title1">
                 <h4> Manage User </h4>
@@ -66,26 +39,40 @@
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
+                   <% int counter = 0; %>
+                    <c:forEach var="User" items="${userlist}">
+
                     <tr>
-                        <td>1</td>
-                        <td>Putera</td>
-                        <td>Syabil</td>
-                        <td>Putera1999@graduate.utm.my</td>
-                        <td>0122991249</td>                    
-                        <td><button name ="edit1" type="submit" class="btn btn-outline-warning">Edit</button></td>
-                        <td><button name ="delete1" type="submit" class="btn btn-outline-danger">Delete</button></td>
+                        <td><input class="form-control" name="identification" id="identification" type="text" value="${User.getId()}" aria-label="Disabled input example" readonly></td>
+                        <td><input class="form-control" name="firstname" id="f<%= counter%>" type="text" value="${User.getFirstname()}" aria-label="Disabled input example" disabled></td>
+                        <td><input class="form-control" name="lastname" id="l<%= counter%>" type="text" value="${User.getLastname()}" aria-label="Disabled input example" disabled></td>
+                        <td><input class="form-control" name="email" id="e<%= counter%>" type="text" value="${User.getEmail()}" aria-label="Disabled input example" disabled></td>
+                        <td><input class="form-control" name="phonenum" id="p<%= counter%>" type="text" value="${User.getPhonenum()}" aria-label="Disabled input example" disabled></td>                    
+                        <td><button name ="edit${User.getId()}" value="<%= counter%>" type="button" onclick="myFunction()" class="btn btn-outline-warning">Edit</button></td>
+                        <td><button name ="delete" value="${User.getId()}" type="submit" class="btn btn-outline-danger">Delete</button></td>
+                        <% counter++; %>
+                    
+                    
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Pharveish</td>
-                        <td>Selvam</td>
-                        <td>pharveish@example.com</td>
-                        <td>0123456789</td>                    
-                        <td><button name ="edit2" type="button" class="btn btn-outline-warning">Edit</button></td>
-                        <td><button name ="delete2" type="button" class="btn btn-outline-danger">Delete</button></td>
-                    </tr>
-                </form>
+                    </c:forEach>
+                 
                 </table>
+                   <button name ="save" id="save" value="${User.getId()}" type="submit" class="btn btn-outline-success" disabled="true">Save</button>
+                            </form>
             </div> 
+
     </body>
+                        <script> 
+                        $("button").click(function() {
+                        var fired_button = $(this).val();
+                        element = String(fired_button);
+                        document.getElementById("f"+element).disabled = false;
+                        document.getElementById("l"+element).disabled = false;
+                        document.getElementById("e"+element).disabled = false;
+                        document.getElementById("p"+element).disabled = false;
+                        document.getElementById("save").disabled = false;
+                        });
+                        function myFunction(){
+
+                        }</script>  
 </html>

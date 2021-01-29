@@ -28,27 +28,27 @@
                     </tr>
                     <tr>
                     <form action="profileController" method="post">   
-                    <td>First Name</td> 
+                    <td>First Name </td> 
                     <td>
-                        <input class="form-control" id="firstname" type="text" value="Pharveish" aria-label="Disabled input example" disabled>
+                        <input class="form-control" name="firstname" id="firstname" type="text" value="<%=session.getAttribute("firstname")%>" aria-label="Disabled input example" disabled>
                     </td>
                     </tr>
                     <tr>
                     <td>Last Name</td> 
                     <td>
-                        <input class="form-control" id="lastname" type="text" value="Selvam" aria-label="Disabled input example" disabled>
+                        <input class="form-control" name="lastname" id="lastname" type="text" value="<%=session.getAttribute("lastname")%>" aria-label="Disabled input example" disabled>
                     </td>
                     </tr>
                     <tr>
                     <td>Phone Number</td> 
                     <td>
-                        <input class="form-control" id="phonenum" type="text" value="0123456789" aria-label="Disabled input example" disabled>
+                        <input class="form-control" name="phonenum" id="phonenum" type="text" value="<%=session.getAttribute("pnum")%>" aria-label="Disabled input example" disabled>
                     </td>
                     </tr>
                     <tr>
                     <td>Email Address</td> 
                     <td>
-                        <input class="form-control" name ="emailadd" id="emailadd" type="text" value="pharveish@example.com" aria-label="Disabled input example" disabled>
+                        <input class="form-control" name ="emailadd" id="emailadd" type="text" value="<%=session.getAttribute("login")%>" aria-label="Disabled input example" disabled>
                     </td>
                     </tr>
                 </table>
@@ -68,7 +68,6 @@
     document.getElementById('firstname').disabled = false;
     document.getElementById('lastname').disabled = false;
     document.getElementById('phonenum').disabled = false;
-    document.getElementById('emailadd').disabled = false;
     document.getElementById("editbutton").disabled = true;
     document.getElementById("savebutton").disabled = false;
     
