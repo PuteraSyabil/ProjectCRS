@@ -17,7 +17,7 @@ import java.sql.PreparedStatement;
 public class EditCarDAO {
      public String editCar(Car car)
     {
-        String carNo= String.valueOf(car.getCarNo());
+        int carNo= car.getCarNo();
         String model= car.getModel();
         String type=car.getType();
     
@@ -41,7 +41,7 @@ public class EditCarDAO {
             pstmt=con.prepareStatement("update car set model=?, type=? where carNo=?");
             pstmt.setString(1, model);
             pstmt.setString(2, type);
-            pstmt.setString(3, carNo);
+            pstmt.setInt(3, carNo);
             
             
             pstmt.executeUpdate();

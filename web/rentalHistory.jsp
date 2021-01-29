@@ -51,7 +51,8 @@
                                 <td>
                                     <form method="get" action="editCarAdmin.jsp">
                                             <input type="hidden" name="carNo" value=${Car.getCarNo()}>
-                                           
+                                            <input type="hidden" name="model" value=${Car.getModel()}>
+                                            <input type="hidden" name="type" value=${Car.getType()}>
                                         <button type="submit" class="btn btn-outline-primary">Edit</button>
                                     </form>
                             </td>
