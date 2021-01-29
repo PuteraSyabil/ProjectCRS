@@ -44,7 +44,7 @@ public class profileController extends HttpServlet {
         String button = request.getParameter("savebutton");
         String url = "jdbc:mysql://localhost:3306/CRS_project";
         String uname="root";
-        String pass = "root";
+        String pass = "void";
         if(button.equals("save")){
             HttpSession session = request.getSession(true);
             String firstname = request.getParameter("firstname");
