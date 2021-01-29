@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DAO.RentCarDAO;
 import DAO.AddCarDAO;
 import bean.Car;
 import bean.Rent;

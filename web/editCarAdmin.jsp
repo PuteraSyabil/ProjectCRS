@@ -15,14 +15,23 @@
         <body>
                 <%@include file="navAdmin.jsp" %>
                 <% String carNo = request.getParameter("carNo"); %>
+                <% String model = request.getParameter("model"); %>
+                <% String type = request.getParameter("type"); %>
                 <div style="margin:100px; margin-top:50px">
                 <h2>Edit Car</h2>
                 <form  method="post" action="EditCarController">
-                    <% request.setAttribute("carNo", carNo); %>
+                    <div class="form-group row">
+                      <label for="carNo" class="col-sm-2 col-form-label">Car No</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="carNo" value="<%=carNo%>" readonly>
+                        </div>
+                    </div>
+                       
+                   
                     <div class="form-group row">
                       <label for="Model" class="col-sm-2 col-form-label">Model</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="model" placeholder="" required>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="model" value="<%=model%>" required>
                         </div>
                     </div>
                     <div class="form-group row">

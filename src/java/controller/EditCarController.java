@@ -37,13 +37,17 @@ public class EditCarController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             if(request.getParameter("btn_editcar")!=null){
-            String ScarNo = (request.getAttribute("carNo")).toString();
-            int carNo=Integer.parseInt(ScarNo);
+               
+              String ScarNo = request.getParameter("carNo");
+              int carNo=Integer.parseInt(ScarNo);
+      
             String model=request.getParameter("model");
+
             String type=request.getParameter("type");
+ 
             Car car=new Car();
             car.setCarNo(carNo);
-            car.setModel(model);
+           car.setModel(model);
             car.setType(type);
             
             EditCarDAO editCarDao=new EditCarDAO(); //this class contain main logic to perform function calling and database operation
@@ -52,12 +56,14 @@ public class EditCarController extends HttpServlet {
             
             if(editCarValidate.equals("SUCCESS EDIT CAR")) //check calling authorizeRegister() function receive "SUCCESS REGISTER" string message after redirect to index.jsp page
             {
+              
                 request.setAttribute("EditCarSuccess",editCarValidate); //apply register successfully message "RegiseterSuccessMsg"
                 RequestDispatcher rd=request.getRequestDispatcher("RentalHistoryController"); //redirect to index.jsp page
                 rd.forward(request, response);
             }
             else
             {
+               
                 request.setAttribute("EditCarFail",editCarValidate); // apply register error message "RegiseterErrorMsg"
                 RequestDispatcher rd=request.getRequestDispatcher("editCarAdmin.jsp"); //show error same page register.jsp page
                 rd.include(request, response);
