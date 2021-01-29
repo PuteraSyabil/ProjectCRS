@@ -7,14 +7,18 @@ package bean;
 
 /**
  *
- * @author user
+ * @author USER
  */
-public class LoginBean {
+public class User {
     private String email, firstname, lastname, phonenum, password;
     private int id;
-    
-    public int getID(){
-        return id;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstname() {
@@ -40,18 +44,6 @@ public class LoginBean {
     public void setPhonenum(String phonenum) {
         this.phonenum = phonenum;
     }
-    
-    public void setID(int id){
-        this.id=id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getPassword() {
         return password;
@@ -59,6 +51,14 @@ public class LoginBean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

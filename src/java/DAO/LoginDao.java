@@ -41,6 +41,9 @@ public class LoginDao {
             while(rs.next())
             {
                 loginBean.setID(rs.getInt(1));
+                loginBean.setFirstname(rs.getString("firstname"));
+                loginBean.setLastname(rs.getString("lastname"));
+                loginBean.setPhonenum(rs.getString("pnum"));
                 dbemail=rs.getString("email");
                 dbpassword=rs.getString("password");
                 
