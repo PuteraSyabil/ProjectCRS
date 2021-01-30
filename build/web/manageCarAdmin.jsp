@@ -16,17 +16,23 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="css/rentalHistory.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-        <title>Rental History</title>
+        <title>Manage Car</title>
     </head>
     <body class="bg-light">
         
         <!-- Navigation -->
           <%@include file="navAdmin.jsp" %>
+          
             <!-- Title -->
   
             <div style="margin:100px; margin-top:50px">
-                <h2>Inventory</h2>
+               
+                <a href="addCarAdmin.jsp"><button style="float: right; margin-bottom: 20px" type="button" class="btn btn-secondary d-flex justify-content-center align-content-between" >
+                                 <span class="material-icons">add_circle_outline</span>
+                                Add Car</button></a>
                 <table class="table table-striped table-hover" >
                     <thead class="thead-dark">
                     <tr>
@@ -37,6 +43,7 @@
                         <th>Rent Status</th>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <th>Maintenance</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,13 +60,21 @@
                                             <input type="hidden" name="carNo" value=${Car.getCarNo()}>
                                             <input type="hidden" name="model" value=${Car.getModel()}>
                                             <input type="hidden" name="type" value=${Car.getType()}>
-                                        <button type="submit" class="btn btn-outline-primary">Edit</button>
+                                        <button type="submit" class="btn btn-outline-primary d-flex justify-content-center align-content-between"><span class="material-icons">create</span>Edit</button>
                                     </form>
                             </td>
                             <td>
                                     <form method="post" action="DeleteCarController">
                                             <input type="hidden" name="carNo" value=${Car.getCarNo()}>
-                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                        <button type="submit" class="btn btn-outline-danger d-flex justify-content-center align-content-between"><span class="material-icons">delete</span>Delete</button>
+                                    </form>
+                            </td>
+                            <td>
+                                    <form method="post" action="maintenanceAdmin.jsp">
+                                            <input type="hidden" name="carNo" value=${Car.getCarNo()}>
+                                            <input type="hidden" name="model" value=${Car.getModel()}>
+                                            <input type="hidden" name="type" value=${Car.getType()}>
+                                        <button type="submit" class="btn btn-outline-warning d-flex justify-content-center align-content-between"><span class="material-icons">settings</span>Maintenance</button>
                                     </form>
                             </td>
                         </tr>
