@@ -11,6 +11,7 @@ package bean;
  */
 public class Maintenance {
     private int mid, fk_carNo;
+    private String issue, timeSent, dateSent;
 
     public int getFk_carNo() {
         return fk_carNo;
@@ -19,7 +20,7 @@ public class Maintenance {
     public void setFk_carNo(int fk_carNo) {
         this.fk_carNo = fk_carNo;
     }
-    private String issue, timeSent, dateSent;
+    
 
     public int getMid() {
         return mid;
