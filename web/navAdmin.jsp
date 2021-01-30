@@ -38,6 +38,9 @@
                         <li class="nav-item">
                           <a class="nav-link" href="RentalHistoryController">Manage Car</a>
                         </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="viewMaintenanceController">Car on Maintenance</a>
+                        </li>
                         
                         
                       </ul>
