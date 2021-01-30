@@ -41,6 +41,7 @@
                         <th>Type</th>
                         <th>Date Received</th>
                         <th>Rent Status</th>
+                        <th>Image</th>
                         <th>Edit</th>
                         <th>Delete</th>
                         <th>Maintenance</th>
@@ -55,6 +56,7 @@
                             <td>${Car.getType()}</td>
                             <td>${Car.getDateReceived()}</td>
                             <td>${Car.getRentStatus()}</td>
+                            <td><img src="image_car/${Car.getFile()}" alt="N/A" width="150" height="100"> </td> <!-- Tolong displaykan image, kau either summon filename or path from db -->
                                 <td>
                                     <form method="get" action="editCarAdmin.jsp">
                                             <input type="hidden" name="carNo" value=${Car.getCarNo()}>

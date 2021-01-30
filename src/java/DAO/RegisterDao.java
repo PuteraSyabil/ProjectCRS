@@ -16,7 +16,7 @@ public class RegisterDao {
         
         String url = "jdbc:mysql://localhost:3306/CRS_project";
         String uname="root";
-        String pass = "void";
+        String pass = "";
         
         
         
