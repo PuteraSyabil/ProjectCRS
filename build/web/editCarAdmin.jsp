@@ -3,7 +3,9 @@
     Created on : Jan 19, 2021, 10:44:12 PM
     Author     : pharveish
 --%>
-
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.Random"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,14 +17,27 @@
         <body>
                 <%@include file="navAdmin.jsp" %>
                 <% String carNo = request.getParameter("carNo"); %>
+                <% String model = request.getParameter("model"); %>
+                <% String type = request.getParameter("type"); %>
                 <div style="margin:100px; margin-top:50px">
                 <h2>Edit Car</h2>
-                <form  method="post" action="EditCarController">
-                    <% request.setAttribute("carNo", carNo); %>
+                
+                
+                
+                
+                <form  method="post" action="EditCarController" enctype="multipart/form-data">
+                    <div class="form-group row">
+                      <label for="carNo" class="col-sm-2 col-form-label">Car No</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="carNo" value="<%=carNo%>" readonly>
+                        </div>
+                    </div>
+                       
+                   
                     <div class="form-group row">
                       <label for="Model" class="col-sm-2 col-form-label">Model</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="model" placeholder="" required>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="model" value="<%=model%>" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -37,8 +52,17 @@
                             </select>
                         </div>
                     </div>
+                        
+                     <div class="form-group row">
+                      <label for="file" class="col-sm-2 col-form-label">Car Image</label>
+                        <div class="col-sm-10">
+                            <input type="file"  name="file" required>
+                        </div>
+                    </div>
+                        
+                        
                     
-                    <button type="submit" name="btn_editcar" class="btn btn-outline-success mb-2">Edit Car</button>
+                    <button type="submit" name="btn_editcar" class="btn btn-outline-success mb-2">Save</button>
                   </form>
                 </div>
         </body>

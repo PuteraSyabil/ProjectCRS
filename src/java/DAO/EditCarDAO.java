@@ -17,16 +17,18 @@ import java.sql.PreparedStatement;
 public class EditCarDAO {
      public String editCar(Car car)
     {
-        String carNo= String.valueOf(car.getCarNo());
+        int carNo= car.getCarNo();
         String model= car.getModel();
         String type=car.getType();
+        String filename=car.getFile();
+        String path=car.getPath();
     
        
      
         
         String url = "jdbc:mysql://localhost:3306/CRS_project";
         String uname="root";
-        String pass = "void";
+        String pass = "";
         
         
         
@@ -38,10 +40,12 @@ public class EditCarDAO {
             
             PreparedStatement pstmt = null;
             
-            pstmt=con.prepareStatement("update car set model=?, type=? where carNo=?");
+            pstmt=con.prepareStatement("update car set model=?, type=?, filename=?, path=? where carNo=?");
             pstmt.setString(1, model);
             pstmt.setString(2, type);
-            pstmt.setString(3, carNo);
+            pstmt.setString(3, filename);
+            pstmt.setString(4, path);
+            pstmt.setInt(5, carNo);
             
             
             pstmt.executeUpdate();
@@ -49,6 +53,7 @@ public class EditCarDAO {
             pstmt.close();
             
             con.close();
+            
             return "SUCCESS EDIT CAR";
             
             

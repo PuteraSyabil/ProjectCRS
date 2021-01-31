@@ -1,11 +1,9 @@
 <%-- 
-    Document   : editCarAdmin
-    Created on : Jan 19, 2021, 10:44:12 PM
+    Document   : maintenanceAdmin
+    Created on : Jan 30, 2021, 10:29:11 AM
     Author     : pharveish
 --%>
-<%@page import="java.util.Set"%>
-<%@page import="java.util.HashSet"%>
-<%@page import="java.util.Random"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,12 +18,8 @@
                 <% String model = request.getParameter("model"); %>
                 <% String type = request.getParameter("type"); %>
                 <div style="margin:100px; margin-top:50px">
-                <h2>Edit Car</h2>
-                
-                
-                
-                
-                <form  method="post" action="EditCarController" enctype="multipart/form-data">
+                <h2>Maintenance Form</h2>
+                <form  method="post" action="MaintenanceController">
                     <div class="form-group row">
                       <label for="carNo" class="col-sm-2 col-form-label">Car No</label>
                         <div class="col-sm-10">
@@ -37,32 +31,28 @@
                     <div class="form-group row">
                       <label for="Model" class="col-sm-2 col-form-label">Model</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="model" value="<%=model%>" required>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="model" value="<%=model%>" readonly>
                         </div>
                     </div>
+                        
                     <div class="form-group row">
-                      <label for="Type" class="col-sm-2 col-form-label">Type</label>
+                      <label for="Model" class="col-sm-2 col-form-label">Model</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="exampleFormControlSelect1" name="type" required>
-                              <option>Sedan</option>
-                              <option>Hatchback</option>
-                              <option>MPV</option>
-                              <option>SUV</option>
-                              <option>Sports</option>
-                            </select>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="type" value="<%=type%>" readonly>
                         </div>
                     </div>
                         
-                     <div class="form-group row">
-                      <label for="file" class="col-sm-2 col-form-label">Car Image</label>
+             
+                    <div class="form-group row">
+                      <label for="Issue" class="col-sm-2 col-form-label">Issue</label>
                         <div class="col-sm-10">
-                            <input type="file"  name="file" required>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="issue"  required>
                         </div>
                     </div>
-                        
-                        
                     
-                    <button type="submit" name="btn_editcar" class="btn btn-outline-success mb-2">Save</button>
+                    
+                    
+                    <button type="submit" name="btn_maintenance" class="btn btn-outline-success mb-2">Send for Maintenance</button>
                   </form>
                 </div>
         </body>

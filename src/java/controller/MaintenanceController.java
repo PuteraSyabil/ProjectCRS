@@ -5,15 +5,12 @@
  */
 package controller;
 
-import DAO.RentCarDAO;
-import DAO.AddCarDAO;
-import bean.Car;
-import bean.Rent;
+import DAO.MaintenanceDAO;
+import bean.Maintenance;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Set;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author pharveish
  */
-@WebServlet(name = "RentCarController", urlPatterns = {"/RentCarController"})
-public class RentCarController extends HttpServlet {
+@WebServlet(name = "MaintenanceController", urlPatterns = {"/MaintenanceController"})
+public class MaintenanceController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,44 +38,49 @@ public class RentCarController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       try (PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
             DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("HH:mm:ss"); 
             LocalDateTime now = LocalDateTime.now();  
-            if(request.getParameter("btn_rent")!=null) //check button click event not null from register.jsp page button
-        {
-            int carNo=Integer.parseInt(request.getParameter("carNo"));
-            double duration=Double.parseDouble(request.getParameter("duration"));
-            double totalprice=Double.parseDouble(request.getParameter("total"));
-           
-            HttpSession session=request.getSession();
-            Rent rent=new Rent();
-            
-            rent.setDuration(duration);
-            rent.setTotalPrice(totalprice);
-            rent.setRentDate(dtf.format(now));
-            rent.setRentTime(dtf2.format(now));
-            rent.setFk_carNo(carNo);
-            rent.setFk_userID((Integer)session.getAttribute("loginID"));
-            
-            
-            
-            
-            RentCarDAO rentcarDAO=new RentCarDAO(); //this class contain main logic to perform function calling and database operation
-            
-            String rentCarValidate=rentcarDAO.authorizeRentCar(rent); //send registerBean object values into authorizeRegister() function in RegisterDao class
-            
-            if(rentCarValidate.equals("SUCCESS RENT CAR")) //check calling authorizeRegister() function receive "SUCCESS REGISTER" string message after redirect to index.jsp page
+            if(request.getParameter("btn_maintenance")!=null) //check button click event not null from register.jsp page button
             {
-                request.setAttribute("RentCarSSuccess",rentCarValidate); //apply register successfully message "RegiseterSuccessMsg"
-                RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp"); //redirect to index.jsp page
+            
+            int carNo=Integer.parseInt(request.getParameter("carNo"));
+            String issue = request.getParameter("issue");
+           
+         
+            Maintenance m=new Maintenance();
+            
+            m.setIssue(issue);
+     
+            m.setDateSent(dtf.format(now));
+            m.setTimeSent(dtf2.format(now));
+            m.setFk_carNo(carNo);
+            
+       
+            
+            
+            
+            MaintenanceDAO mDAO=new MaintenanceDAO(); //this class contain main logic to perform function calling and database operation
+            
+            String carMaintenance=mDAO.maintainCar(m); //send registerBean object values into authorizeRegister() function in RegisterDao class
+            
+            if(carMaintenance.equals("maintenanceSuccess")) //check calling authorizeRegister() function receive "SUCCESS REGISTER" string message after redirect to index.jsp page
+            {
+                request.setAttribute("maintainCar",carMaintenance); //apply register successfully message "RegiseterSuccessMsg"
+                RequestDispatcher rd=request.getRequestDispatcher("welcomeAdmin.jsp"); //redirect to index.jsp page
                 rd.forward(request, response);
             }
-            else
+            else if(carMaintenance.equals("maintenanceFail"))
             {
-                request.setAttribute("RentCarFail",rentCarValidate); // apply register error message "RegiseterErrorMsg"
-                RequestDispatcher rd=request.getRequestDispatcher("rentCar.jsp"); //show error same page register.jsp page
-                rd.include(request, response);
+                out.println(m.getIssue());
+                out.println(m.getDateSent());
+                out.println(m.getTimeSent());
+                out.println(m.getFk_carNo());
+                out.println("fail");
+//                request.setAttribute("RentCarFail",maintainCar); // apply register error message "RegiseterErrorMsg"
+//                RequestDispatcher rd=request.getRequestDispatcher("manageCarAdmin.jsp"); //show error same page register.jsp page
+//                rd.include(request, response);
             }
             
         }

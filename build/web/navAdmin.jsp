@@ -36,11 +36,12 @@
                           <a class="nav-link" href="RentedListController">Car on Rent</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="RentalHistoryController">Car List</a>
+                          <a class="nav-link" href="RentalHistoryController">Manage Car</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="addCarAdmin.jsp">Add Car</a>
+                          <a class="nav-link" href="viewMaintenanceController">Car on Maintenance</a>
                         </li>
+                        
                         
                       </ul>
                     </div>

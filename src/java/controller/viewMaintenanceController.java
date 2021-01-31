@@ -5,24 +5,26 @@
  */
 package controller;
 
+import DAO.viewMaintenanceDAO;
+import bean.Maintenance;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import bean.Car;
-import DAO.CarListDAO;
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Taufiiq Azman
+ * @author USER
  */
-public class RentalHistoryController extends HttpServlet {
+@WebServlet(name = "ViewMaintenanceController", urlPatterns = {"/viewMaintenanceController"})
+public class viewMaintenanceController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +36,18 @@ public class RentalHistoryController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            CarListDAO carlistDAO = new CarListDAO();
-            ArrayList<Car> carlist = carlistDAO.getCarList();
+            out.print("1");
+            viewMaintenanceDAO viewMaintenanceDAO = new viewMaintenanceDAO();
+            out.print("2");
+            ArrayList<Maintenance> carlist = viewMaintenanceDAO.getMaintenanceCar();
+            out.print("3");
             request.setAttribute("carlist", carlist);
-            request.getRequestDispatcher("/manageCarAdmin.jsp").forward(request, response);
-            
-        }
-         catch (SQLException ex) {
-            Logger.getLogger(CarListController.class.getName()).log(Level.SEVERE, null, ex);
+            out.print("4");
+            request.getRequestDispatcher("/viewMaintenanceAdmin.jsp").forward(request, response);
+
         }
     }
 
@@ -64,7 +66,9 @@ public class RentalHistoryController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(RentalHistoryController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(viewMaintenanceController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(viewMaintenanceController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -82,7 +86,9 @@ public class RentalHistoryController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(RentalHistoryController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(viewMaintenanceController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(viewMaintenanceController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
