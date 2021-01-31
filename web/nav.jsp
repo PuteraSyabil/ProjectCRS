@@ -36,6 +36,9 @@
                         <li class="nav-item">
                           <a class="nav-link" href="ToRentController">Rent Now</a>
                         </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="ViewCurrentRentedController">Current Rented Car</a>
+                        </li>
                         
                       </ul>
                     </div>

@@ -23,7 +23,11 @@
                     double totalPrice = price*duration;
                     
                 %>
-                <form  method="post" action="RentCarController">
+               <form  method="post" action="RentCarController">
+                    <div style="margin:500px; margin-top:30px">
+                        <div class="text-center">
+                            <h2>Checkout</h2>
+                        </div> 
                     <div class="form-group row">
                       <label for="Model" class="col-sm-2 col-form-label">Model</label>
                         <div class="col-sm-10">
@@ -52,6 +56,7 @@
                         <input type="hidden" name="carNo" value=<%=carNo%>>
                         <input type="hidden" name="total" value=<%=totalPrice%>>
                     <button type="submit" name="btn_rent" class="btn btn-outline-success mb-2">Rent Now</button>
+                    </div>
                   </form>
         </body>
 </html>
