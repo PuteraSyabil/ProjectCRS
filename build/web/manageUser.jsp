@@ -43,7 +43,7 @@
                     <c:forEach var="User" items="${userlist}">
 
                     <tr>
-                        <td><input class="form-control" name="identification" id="identification" type="text" value="${User.getId()}" aria-label="Disabled input example" readonly></td>
+                        <td><input class="form-control" name="identification" id="i<%= counter%>" type="text" value="${User.getId()}" aria-label="Disabled input example" disabled></td>
                         <td><input class="form-control" name="firstname" id="f<%= counter%>" type="text" value="${User.getFirstname()}" aria-label="Disabled input example" disabled></td>
                         <td><input class="form-control" name="lastname" id="l<%= counter%>" type="text" value="${User.getLastname()}" aria-label="Disabled input example" disabled></td>
                         <td><input class="form-control" name="email" id="e<%= counter%>" type="text" value="${User.getEmail()}" aria-label="Disabled input example" disabled></td>
@@ -66,6 +66,8 @@
                         $("button").click(function() {
                         var fired_button = $(this).val();
                         element = String(fired_button);
+                        document.getElementById("i"+element).disabled = false;
+                        document.getElementById("i"+element).readOnly = true;
                         document.getElementById("f"+element).disabled = false;
                         document.getElementById("l"+element).disabled = false;
                         document.getElementById("e"+element).disabled = false;

@@ -11,7 +11,23 @@ package bean;
  */
 public class Maintenance {
     private int mid, fk_carNo;
-    private String issue, timeSent, dateSent;
+    private String issue, timeSent, dateSent, model, type;
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getFk_carNo() {
         return fk_carNo;
