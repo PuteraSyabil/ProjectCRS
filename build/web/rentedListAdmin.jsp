@@ -26,7 +26,7 @@
             <!-- Title -->
   
             <div style="margin:100px; margin-top:50px">
-                <h2>Cars being Rented</h2>
+                <h2>Rental History</h2>
                 <table class="table table-striped table-hover" >
                     <thead class="thead-dark">
                     <tr>
@@ -40,6 +40,7 @@
                         <th>Date of Rental</th>
                         <th>Starting time</th>
                         <th>Duration</th>
+                        <th>Status</th>
                         <th>Earnings</th>
                       
                     </tr>
@@ -57,7 +58,8 @@
                             <td>${Rent.getIc()}</td>
                             <td>${Rent.getRentDate()}</td>
                             <td>${Rent.getRentTime()}</td>
-                            <td>${Rent.getDuration()}</td>
+                            <td>${Rent.getDuration()} hours</td>
+                            <td>${Rent.getRentStatus()}</td>
                             <td>RM${Rent.getTotalPrice()}</td>
                             
                           
@@ -66,7 +68,7 @@
 
                     </c:forEach>
                         <tr>                        
-                            <td colspan="10"><b>Total Earnings</b></td>
+                            <td colspan="11"><b>Total Earnings</b></td>
                             <td>RM${total}</td>
                         </tr>
                     </tbody>

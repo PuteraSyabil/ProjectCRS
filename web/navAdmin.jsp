@@ -33,7 +33,10 @@
                           <a class="nav-link" href="ManageUserController">Manage Users</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="RentedListController">Car on Rent</a>
+                          <a class="nav-link" href="CurrentlyRentedAdminController">Currently on Rent</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="RentedListController">Rental History</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="RentalHistoryController">Manage Car</a>

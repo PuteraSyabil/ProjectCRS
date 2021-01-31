@@ -40,7 +40,7 @@ public class CurrentRentedDAO {
             Connection con = DriverManager.getConnection(url,uname,pass);
             PreparedStatement pstmt = null;
             
-            pstmt = con.prepareStatement("select car.carNo, car.model, car.filename, rent.rentDate, rent.rentTime, rent.duration from rent join car on rent.fk_carNo=car.carNo where rent.fk_userID=?");
+            pstmt = con.prepareStatement("select car.carNo, car.model, car.filename, rent.rentDate, rent.rentTime, rent.duration from rent join car on rent.fk_carNo=car.carNo where car.rentStatus=true and rent.fk_userID=?");
             
             pstmt.setInt(1,LoginID);
             ResultSet rs = pstmt.executeQuery();
