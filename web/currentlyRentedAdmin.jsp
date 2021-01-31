@@ -1,6 +1,6 @@
 <%-- 
-    Document   : rentedListAdmin
-    Created on : Jan 20, 2021, 12:43:23 AM
+    Document   : currentlyRentedAdmin
+    Created on : Feb 1, 2021, 4:49:46 AM
     Author     : pharveish
 --%>
 
@@ -26,7 +26,7 @@
             <!-- Title -->
   
             <div style="margin:100px; margin-top:50px">
-                <h2>Rental History</h2>
+                <h2>Currently Being Rented</h2>
                 <table class="table table-striped table-hover" >
                     <thead class="thead-dark">
                     <tr>
@@ -40,8 +40,8 @@
                         <th>Date of Rental</th>
                         <th>Starting time</th>
                         <th>Duration</th>
-                        <th>Status</th>
-                        <th>Earnings</th>
+                        <th>Return Car</th>
+                    
                       
                     </tr>
                     </thead>
@@ -59,20 +59,21 @@
                             <td>${Rent.getRentDate()}</td>
                             <td>${Rent.getRentTime()}</td>
                             <td>${Rent.getDuration()} hours</td>
-                            <td>${Rent.getRentStatus()}</td>
-                            <td>RM${Rent.getTotalPrice()}</td>
-                            
+                            <td>
+                            <form method="post" action="returnCarController">
+                                            <input type="hidden" name="carNo" value=${Rent.getCarNo()}>
+                                        <button type="submit" class="btn btn-outline-success d-flex justify-content-center align-content-between">Return</button>
+                            </form>
+                            </td>
                           
                              <c:set var="total" value="${total + Rent.getTotalPrice()}" />
                         </tr>
 
                     </c:forEach>
-                        <tr>                        
-                            <td colspan="11"><b>Total Earnings</b></td>
-                            <td>RM${total}</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div> 
     </body>
 </html>
+

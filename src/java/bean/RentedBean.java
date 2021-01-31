@@ -16,6 +16,15 @@ public class RentedBean {
     private int rentID, carNo;
     private double duration, totalPrice;
     private String rentDate, rentTime, model, type, firstname, lastname, ic, filename;
+    private boolean rentStatus;
+
+    public boolean isRentStatus() {
+        return rentStatus;
+    }
+
+    public void setRentStatus(boolean rentStatus) {
+        this.rentStatus = rentStatus;
+    }
 
     public String getFilename() {
         return filename;
@@ -113,5 +122,12 @@ public class RentedBean {
         this.lastname = lastname;
     }
     
+    public String getRentStatus(){
+        String rentstatus;
+        if(isRentStatus()){
+            rentstatus = "Currently on Rent";
+        } else rentstatus = "Returned";
+        return rentstatus;
+    }
     
 }

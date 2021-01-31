@@ -5,9 +5,6 @@
  */
 package DAO;
 
-import bean.Car;
-import bean.RegisterBean;
-import bean.Rent;
 import bean.RentedBean;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,8 +19,8 @@ import java.util.logging.Logger;
  *
  * @author pharveish
  */
-public class RentedCarDAO {
-       public ArrayList<RentedBean> rentedCarList() throws SQLException {
+public class CurrentlyRentedAdminDAO {
+     public ArrayList<RentedBean> rentedCarList() throws SQLException {
         try {
             ArrayList<RentedBean> rentlist = new ArrayList<RentedBean>();
             String driver = "com.mysql.jdbc.Driver";
@@ -32,7 +29,7 @@ public class RentedCarDAO {
             String userName = "root";
 
             String password = "void";
-            String query = "select rent.rentID, rent.duration, rent.totalPrice, rent.rentDate, rent.rentTime, car.model, car.type, car.carNo, car.rentStatus, user.firstname, user.lastname, user.ic from rent join car on rent.fk_carNo=car.carNo join user on rent.fk_userID=user.id;";
+            String query = "select rent.rentID, rent.duration, rent.totalPrice, rent.rentDate, rent.rentTime, car.model, car.type, car.carNo, user.firstname, user.lastname, user.ic from car join rent on rent.fk_carNo=car.carNo join user on rent.fk_userID=user.id where car.rentStatus=true;";
 
             
             Class.forName(driver);
@@ -49,10 +46,9 @@ public class RentedCarDAO {
                 rentdetail.setModel(rs.getString(6));
                 rentdetail.setType(rs.getString(7));
                 rentdetail.setCarNo(rs.getInt(8));
-                rentdetail.setRentStatus(rs.getBoolean(9));
-                rentdetail.setFirstname(rs.getString(10));
-                rentdetail.setLastname(rs.getString(11));
-                rentdetail.setIc(rs.getString(12));
+                rentdetail.setFirstname(rs.getString(9));
+                rentdetail.setLastname(rs.getString(10));
+                rentdetail.setIc(rs.getString(11));
                 rentlist.add(rentdetail);
             }
             return rentlist;
