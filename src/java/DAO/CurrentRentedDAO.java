@@ -8,6 +8,7 @@ package DAO;
 import bean.Car;
 import bean.Rent;
 import bean.LoginBean;
+import bean.RentedBean;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,9 +26,9 @@ import javax.servlet.http.HttpSession;
  * @author Taufiiq Azman
  */
 public class CurrentRentedDAO {
-     public ArrayList<Rent> getCarList(int LoginID) throws SQLException {
+     public ArrayList<RentedBean> getCarList(int LoginID) throws SQLException {
         
-        ArrayList<Rent> carlist = new ArrayList<Rent>();
+        ArrayList<RentedBean> carlist = new ArrayList<RentedBean>();
         String uname="root";
         String pass = "void";
         String url = "jdbc:mysql://localhost:3306/CRS_project";
@@ -39,19 +40,19 @@ public class CurrentRentedDAO {
             Connection con = DriverManager.getConnection(url,uname,pass);
             PreparedStatement pstmt = null;
             
-            pstmt = con.prepareStatement("select * from rent where fk_userID=?");
+            pstmt = con.prepareStatement("select car.carNo, car.model, car.filename, rent.rentDate, rent.rentTime, rent.duration from rent join car on rent.fk_carNo=car.carNo where rent.fk_userID=?");
             
             pstmt.setInt(1,LoginID);
             ResultSet rs = pstmt.executeQuery();
             
             while(rs.next()){
-                Rent rent= new Rent();
-                rent.setRentID(rs.getInt(1));
-                rent.setDuration(rs.getDouble(2));
-                rent.setTotalPrice(rs.getDouble(3));
-                rent.setFk_carNo(rs.getInt(4));
-                rent.setRentDate(rs.getString(6));
-                rent.setRentTime(rs.getString(7));
+                RentedBean rent= new RentedBean();
+                rent.setCarNo(rs.getInt(1));
+                rent.setModel(rs.getString(2));
+                rent.setFilename(rs.getString(3));
+                rent.setRentDate(rs.getString(4));
+                rent.setRentTime(rs.getString(5));
+                rent.setDuration(rs.getDouble(6));
                 carlist.add(rent);
             }
             pstmt.close();

@@ -26,8 +26,8 @@
                         <th>No</th>
                         <th>Model</th>
                         <th>Type</th>
-                        <th>Date Received</th>
-                        <th>Rent Status</th>
+                        <th>Image</th>
+                        <th>Availability</th>
                     
                         
                     </tr>
@@ -39,7 +39,7 @@
                             <td>${Car.getCarNo()}</td>
                             <td>${Car.getModel()}</td>
                             <td>${Car.getType()}</td>
-                            <td>${Car.getDateReceived()}</td>
+                            <td><img src="image_car/${Car.getFile()}" alt="N/A" width="150" height="100"> </td>
                             <td>${Car.getRentStatus()}</td>
                           
                           

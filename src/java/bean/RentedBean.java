@@ -5,6 +5,9 @@
  */
 package bean;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author pharveish
@@ -12,7 +15,15 @@ package bean;
 public class RentedBean {
     private int rentID, carNo;
     private double duration, totalPrice;
-    private String rentDate, rentTime, model, type, firstname, lastname, ic;
+    private String rentDate, rentTime, model, type, firstname, lastname, ic, filename;
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
     public String getIc() {
         return ic;
@@ -101,4 +112,6 @@ public class RentedBean {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+    
+    
 }
