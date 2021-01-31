@@ -29,19 +29,23 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>Car No</th>
+                        <th>Model</th>
+                        <th>Image</th>                     
                         <th>Rent Date</th>
                         <th>Rent Time</th>
-                        <th>Total Price</th>
+                        <th>Duration</th>
                     </tr>
                     </thead>
                     <tbody>
                             
                     <c:forEach var="Rent" items="${carlist}">
                         <tr>  
-                            <td>${Rent.getFk_carNo()}</td>
+                            <td>${Rent.getCarNo()}</td>
+                            <td>${Rent.getModel()}</td>
+                            <td><img src="image_car/${Rent.getFilename()}" alt="N/A" width="150" height="100"></td>
                             <td>${Rent.getRentDate()}</td>
                             <td>${Rent.getRentTime()}</td>
-                            <td>${Rent.getTotalPrice()}</td>
+                            <td>${Rent.getDuration()} hours</td>
                         </tr>
                     </c:forEach>
                     </tbody>

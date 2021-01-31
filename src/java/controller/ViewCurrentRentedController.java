@@ -7,6 +7,7 @@ package controller;
 
 import DAO.CurrentRentedDAO;
 import bean.Rent;
+import bean.RentedBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -61,7 +62,7 @@ public class ViewCurrentRentedController extends HttpServlet {
             int LoginID = (int) session.getAttribute("loginID");
             
             CurrentRentedDAO carlistDAO = new CurrentRentedDAO();
-            ArrayList<Rent> carlist = carlistDAO.getCarList(LoginID);
+            ArrayList<RentedBean> carlist = carlistDAO.getCarList(LoginID);
           
             request.setAttribute("carlist", carlist);
             request.getRequestDispatcher("/currentRented.jsp").forward(request, response);
