@@ -28,7 +28,7 @@ public class RentCarDAO {
         
         String url = "jdbc:mysql://localhost:3306/CRS_project";
         String uname="root";
-        String pass = "";
+        String pass = "void";
         
         
         

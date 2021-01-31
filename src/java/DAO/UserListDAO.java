@@ -26,7 +26,7 @@ public class UserListDAO {
             String dbName = "CRS_project";
             String url = "jdbc:mysql://localhost/"+dbName+"?";
             String userName = "root";
-            String password = "";
+            String password = "void";
             String query = "select * from user";
             
             Class.forName(driver);
