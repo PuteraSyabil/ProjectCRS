@@ -22,7 +22,7 @@ public class CarListDAO {
             String dbName = "CRS_project";
             String url = "jdbc:mysql://localhost/"+dbName+"?";
             String userName = "root";
-            String password = "";
+            String password = "void";
             String query = "select * from car";
             
             Class.forName(driver);
