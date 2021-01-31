@@ -23,7 +23,7 @@ public class LoginDao {
         String dbpassword="";
         int dbid;
         String uname="root";
-        String pass = "void";
+        String pass = "";
         
         String url = "jdbc:mysql://localhost:3306/CRS_project";
         
