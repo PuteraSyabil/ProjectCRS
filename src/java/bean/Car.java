@@ -18,12 +18,20 @@ public class Car {
     private String model;
     private String type;
     private String dateReceived;
-    private boolean rentStatus;
+    private boolean rentStatus, maintenance;
     private String file;
     private String path;
 
     public String getFile() {
         return file;
+    }
+
+    public boolean isMaintenance() {
+        return maintenance;
+    }
+
+    public void setMaintenance(boolean maintenance) {
+        this.maintenance = maintenance;
     }
 
     public void setFile(String file) {

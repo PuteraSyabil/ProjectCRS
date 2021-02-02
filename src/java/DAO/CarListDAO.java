@@ -23,7 +23,7 @@ public class CarListDAO {
             String url = "jdbc:mysql://localhost/"+dbName+"?";
             String userName = "root";
             String password = "void";
-            String query = "select * from car";
+            String query = "select * from car where maintenance=false";
             
             Class.forName(driver);
             Connection con = DriverManager.getConnection(url, userName, password);
@@ -36,6 +36,7 @@ public class CarListDAO {
                 car.setType(rs.getString(3));
                 car.setDateReceived(rs.getString(4));
                 car.setRentStatus(rs.getBoolean(5));
+                
                 car.setFile(rs.getString(7));
                 car.setPath(rs.getString(8));
                 carlist.add(car);
