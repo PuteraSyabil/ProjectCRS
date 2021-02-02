@@ -22,9 +22,10 @@
     </head>
     <body class="bg-light">
         <%@include file="nav.jsp" %>
-        <h2 class="text-center">My Current Rented Car</h2>
+        
         
         <div style="margin:100px; margin-top:50px">
+                <h2 class="text-center">My Current Rented Car</h2>
                 <table class="table table-striped table-hover" >
                     <thead class="thead-dark">
                     <tr>

@@ -28,7 +28,7 @@ public class ToRentDAO {
             String url = "jdbc:mysql://localhost/"+dbName+"?";
             String userName = "root";
             String password = "void";
-            String query = "select * from car where rentStatus=false;";
+            String query = "select * from car where rentStatus=false and maintenance=false;";
             
             Class.forName(driver);
             Connection con = DriverManager.getConnection(url, userName, password);
