@@ -22,7 +22,10 @@
    
     google.charts.setOnLoadCallback(drawChart);
     google.charts.setOnLoadCallback(drawChart2);
-    
+    google.charts.setOnLoadCallback(drawChart3);
+    google.charts.setOnLoadCallback(drawChart4);
+    google.charts.setOnLoadCallback(drawChart5);
+    google.charts.setOnLoadCallback(drawChart6);
   
     function drawChart() {
       
@@ -39,8 +42,8 @@
             is3D : true, 
             pieSliceText: 'label', 
             tooltip :  {showColorCode: true}, 
-            'width' : 1300, 
-            'height' : 1000 
+            'width' : 600, 
+            'height' : 600 
         };
         
      
@@ -64,12 +67,112 @@
  
            
           
-            'width' : 1000, 
-            'height' : 1000 
+            'width' : 600, 
+            'height' : 600 
         };
         
      
         var chart = new google.visualization.BarChart(document.getElementById('chart_div2'));
+        
+        chart.draw(data, options);
+    }
+    
+            function drawChart3() {
+      
+        var data = google.visualization.arrayToDataTable([
+              ['Customer Name', 'Expenses(RM)'],
+              <c:forEach items="${custPrice}" var="entry">
+                  [ '${entry.getName()}', ${entry.getTotalPrice2()} ],
+              </c:forEach>
+        ]);
+                    
+        // Set chart options
+        var options = {
+            'title' : 'Earnings from each customer', 
+ 
+           
+          
+            'width' : 600, 
+            'height' : 600 
+        };
+        
+     
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
+        
+        chart.draw(data, options);
+    }
+    
+                function drawChart4() {
+      
+        var data = google.visualization.arrayToDataTable([
+              ['Customer Name', 'Expenses(RM)'],
+              <c:forEach items="${custPrice}" var="entry">
+                  [ '${entry.getName()}', ${entry.getTotalPrice2()} ],
+              </c:forEach>
+        ]);
+                    
+        // Set chart options
+        var options = {
+              'title' : 'Percentage of Earnings from each Customer', 
+            is3D : true, 
+            pieSliceText: 'label', 
+            tooltip :  {showColorCode: true}, 
+            'width' : 600, 
+            'height' : 600 
+        };
+        
+     
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div4'));
+        
+        chart.draw(data, options);
+    }
+    
+                function drawChart5() {
+      
+        var data = google.visualization.arrayToDataTable([
+              ['Duration', 'Rent Quantity'],
+              <c:forEach items="${countDuration}" var="entry">
+                  [ ${entry.getDuration()}, ${entry.getQduration()} ],
+              </c:forEach>
+        ]);
+                    
+        // Set chart options
+        var options = {
+            'title' : 'Duration per Rent', 
+ 
+           
+          
+            'width' : 600, 
+            'height' : 600 
+        };
+        
+     
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div5'));
+        
+        chart.draw(data, options);
+    }
+    
+                function drawChart6() {
+      
+        var data = google.visualization.arrayToDataTable([
+              ['Duration', 'Rent Quantity'],
+              <c:forEach items="${countDuration}" var="entry">
+                  [ '${entry.durationString()}', ${entry.getQduration()} ],
+              </c:forEach>
+        ]);
+                    
+        // Set chart options
+        var options = {
+              'title' : 'Percentage of Duration per Rent', 
+            is3D : true, 
+            pieSliceText: 'label', 
+            tooltip :  {showColorCode: true}, 
+            'width' : 600, 
+            'height' : 600 
+        };
+        
+     
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div6'));
         
         chart.draw(data, options);
     }
@@ -78,19 +181,45 @@
 <body class="bg-light">
         <!-- Navigation -->
           <%@include file="navAdmin.jsp" %>
-    <div class=" container" style="margin-top: 50px">
+    <div class="container" style="margin-top: 50px">
             
-        <table class="table table-striped table-hover" >
-                <h2>Analysis of percentage of sales by car type</h2>
+        <table class="table table-striped table-hover" style="margin-bottom: 100px">
+                <h2>Analysis of profit by car type</h2>
+                <h5>The charts below shows the difference in our earnings depending on the type of car rented by customers.</h5>
                 <tr>
-                    <div id="chart_div"></div>
+                    <td style="width: 500">
+                        <div id="chart_div"></div>
+                    </td>
+                    <td style="width: 500">
+                        <div id="chart_div2"></div>
+                    </td>
                 </tr>
-                <h2>Analysis of total sales by car type</h2>
+        </table>     
+        <table class="table table-striped table-hover" style="margin-bottom: 100px">   
+                <h2>Analysis of profit from each customer</h2>
+                <h5>The charts below shows how much we earned from each customer.</h5>
                 <tr>
-                    <div id="chart_div2"></div>
+                    <td>
+                        <div id="chart_div4"></div>
+                    </td>
+                    <td>
+                        <div id="chart_div3"></div>
+                    </td>
                 </tr>
         </table>
-        
+        <table class="table table-striped table-hover" style="margin-bottom: 100px">   
+                <h2>Analysis of duration per rent</h2>
+                <h5>The charts below shows the number of times a particular duration(hours) is chosen when a customer is renting a car.</h5>
+                <tr>
+                    <td>
+                        <div id="chart_div6"></div>
+                    </td>
+                    <td>
+                        <div id="chart_div5"></div>
+                    </td>
+                </tr>
+        </table>
+         
     </div>
 </body>
 </html>

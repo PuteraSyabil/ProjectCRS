@@ -13,10 +13,26 @@ import java.text.SimpleDateFormat;
  * @author pharveish
  */
 public class RentedBean {
-    private int rentID, carNo; 
+    private int rentID, carNo, qduration; 
     private double duration, totalPrice, totalPrice2;
-    private String rentDate, rentTime, model, type, firstname, lastname, ic, filename, type2;
+    private String rentDate, rentTime, model, type, firstname, lastname, ic, filename, type2, name;
     private boolean rentStatus;
+
+    public int getQduration() {
+        return qduration;
+    }
+
+    public void setQduration(int qduration) {
+        this.qduration = qduration;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getType2() {
         return type2;
@@ -77,6 +93,10 @@ public class RentedBean {
 
     public double getDuration() {
         return duration;
+    }
+    
+    public String durationString(){
+        return getDuration()+" hours";
     }
 
     public void setDuration(double duration) {
