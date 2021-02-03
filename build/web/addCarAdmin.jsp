@@ -3,7 +3,9 @@
     Created on : Jan 19, 2021, 5:05:23 PM
     Author     : pharveish
 --%>
-
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.Random"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +18,7 @@
                 <%@include file="navAdmin.jsp" %>
                 <div style="margin:100px; margin-top:50px">
                 <h2>Add Car</h2>
-                <form  method="post" action="AddCarController">
+                <form  method="post" action="AddCarController" enctype="multipart/form-data">
                     <div class="form-group row">
                       <label for="Model" class="col-sm-2 col-form-label">Model</label>
                         <div class="col-sm-10">
@@ -39,7 +41,7 @@
                      <div class="form-group row">
                       <label for="file" class="col-sm-2 col-form-label">Car Image</label>
                         <div class="col-sm-10">
-                            <input type="file"  name="file" required>
+                            <input type="file"  name="file" >
                         </div>
                     </div>
                     

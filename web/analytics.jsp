@@ -75,15 +75,17 @@
     }
 </script>
 </head>
-<body>
+<body class="bg-light">
         <!-- Navigation -->
           <%@include file="navAdmin.jsp" %>
     <div class=" container" style="margin-top: 50px">
-            <h2>Analysis</h2>
+            
         <table class="table table-striped table-hover" >
+                <h2>Analysis of percentage of sales by car type</h2>
                 <tr>
                     <div id="chart_div"></div>
                 </tr>
+                <h2>Analysis of total sales by car type</h2>
                 <tr>
                     <div id="chart_div2"></div>
                 </tr>
