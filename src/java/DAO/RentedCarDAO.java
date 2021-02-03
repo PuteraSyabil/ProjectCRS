@@ -32,7 +32,7 @@ public class RentedCarDAO {
             String userName = "root";
 
             String password = "void";
-            String query = "select rent.rentID, rent.duration, rent.totalPrice, rent.rentDate, rent.rentTime, car.model, car.type, car.carNo, rent.currentlyRented, user.firstname, user.lastname, user.ic from rent join car on rent.fk_carNo=car.carNo join user on rent.fk_userID=user.id;";
+            String query = "select rent.rentID, rent.duration, rent.totalPrice, rent.rentDate, rent.rentTime, car.model, car.type, car.carNo, rent.currentlyRented, user.firstname, user.lastname, user.ic from rent join car on rent.fk_carNo=car.carNo join user on rent.fk_userID=user.id order by rent.rentID desc;";
 
             
             Class.forName(driver);
@@ -82,6 +82,64 @@ public class RentedCarDAO {
                 RentedBean rentdetail = new RentedBean();
                 rentdetail.setType2(rs.getString(1));
                 rentdetail.setTotalPrice2(rs.getDouble(2));
+                rentlist.add(rentdetail);
+            }
+            return rentlist;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CarListDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+     
+     public ArrayList<RentedBean> custPrice() throws SQLException {
+        try {
+            ArrayList<RentedBean> rentlist = new ArrayList<RentedBean>();
+            String driver = "com.mysql.jdbc.Driver";
+            String dbName = "CRS_project";
+            String url = "jdbc:mysql://localhost/"+dbName+"?";
+            String userName = "root";
+
+            String password = "void";
+            String query = "select  user.firstname, user.lastname, sum(rent.totalPrice) from rent join user on rent.fk_userID=user.id group by user.firstname;";
+
+            
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection(url, userName, password);
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                RentedBean rentdetail = new RentedBean();
+                rentdetail.setName(rs.getString(1)+" "+rs.getString(2));
+                rentdetail.setTotalPrice2(rs.getDouble(3));
+                rentlist.add(rentdetail);
+            }
+            return rentlist;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CarListDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+     
+    public ArrayList<RentedBean> countDuration() throws SQLException {
+        try {
+            ArrayList<RentedBean> rentlist = new ArrayList<RentedBean>();
+            String driver = "com.mysql.jdbc.Driver";
+            String dbName = "CRS_project";
+            String url = "jdbc:mysql://localhost/"+dbName+"?";
+            String userName = "root";
+
+            String password = "void";
+            String query = "select duration, count(*) as quantity from rent group by duration;";
+
+            
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection(url, userName, password);
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                RentedBean rentdetail = new RentedBean();
+                rentdetail.setDuration(rs.getDouble(1));
+                rentdetail.setQduration(rs.getInt(2));
                 rentlist.add(rentdetail);
             }
             return rentlist;

@@ -55,7 +55,7 @@
                     
                         <input type="hidden" name="carNo" value=<%=carNo%>>
                         <input type="hidden" name="total" value=<%=totalPrice%>>
-                    <button type="submit" name="btn_rent" class="btn btn-outline-success mb-2">Rent Now</button>
+                    <button type="submit" name="btn_rent" class="btn btn-outline-success mb-2">Checkout</button>
                     </div>
                   </form>
         </body>

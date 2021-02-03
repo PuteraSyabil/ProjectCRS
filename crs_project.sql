@@ -41,7 +41,7 @@ CREATE TABLE `car` (
 
 LOCK TABLES `car` WRITE;
 /*!40000 ALTER TABLE `car` DISABLE KEYS */;
-INSERT INTO `car` VALUES (2,'Perodua Axia','Hatchback','2020-12-11',1,0,'Axia.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/Axia.jpg'),(3,'Honda City','Sedan','2020-12-14',0,0,'blackleaf.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/blackleaf.jpg'),(7,'Proton Waja','Sedan','2021-01-19',0,0,'PROTON_Impian-2001_main.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/PROTON_Impian-2001_main.jpg'),(9,'Nissan Skyline GT-R34','Sports','2021-01-20',0,0,'trust_r34_gtr_dino_dalle_carbonare_23-1200x800.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/trust_r34_gtr_dino_dalle_carbonare_23-1200x800.jpg'),(10,'Proton Wira','Sedan','2021-01-20',0,1,'Proton-Wira-Malaysia-1994d.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/Proton-Wira-Malaysia-1994d.jpg'),(14,'Ford Ranger','SUV','2021-02-03',1,0,'3e2d26f5491f4c23bd121f3e7a121823_750x420.jpeg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/3e2d26f5491f4c23bd121f3e7a121823_750x420.jpeg'),(15,'Toyota Estima','MPV','2021-02-03',1,0,'estima_ogp_01.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/estima_ogp_01.jpg');
+INSERT INTO `car` VALUES (3,'Honda City','Sedan','2020-12-14',0,0,'blackleaf.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/blackleaf.jpg'),(7,'Proton Waja','Sedan','2021-01-19',0,0,'PROTON_Impian-2001_main.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/PROTON_Impian-2001_main.jpg'),(9,'Nissan Skyline GT-R34','Sports','2021-01-20',0,0,'trust_r34_gtr_dino_dalle_carbonare_23-1200x800.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/trust_r34_gtr_dino_dalle_carbonare_23-1200x800.jpg'),(10,'Proton Wira','Sedan','2021-01-20',0,0,'Proton-Wira-Malaysia-1994d.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/Proton-Wira-Malaysia-1994d.jpg'),(14,'Ford Ranger','SUV','2021-02-03',1,0,'3e2d26f5491f4c23bd121f3e7a121823_750x420.jpeg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/3e2d26f5491f4c23bd121f3e7a121823_750x420.jpeg'),(15,'Toyota Estima','MPV','2021-02-03',1,0,'estima_ogp_01.jpg','/home/pharveish/utm/sem5/ip/SAK-CRS/build/web/image_car/estima_ogp_01.jpg');
 /*!40000 ALTER TABLE `car` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +70,6 @@ CREATE TABLE `maintenance` (
 
 LOCK TABLES `maintenance` WRITE;
 /*!40000 ALTER TABLE `maintenance` DISABLE KEYS */;
-INSERT INTO `maintenance` VALUES (8,'Flat Tyre','08:06:43','2021-02-03',10);
 /*!40000 ALTER TABLE `maintenance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,17 +84,17 @@ CREATE TABLE `rent` (
   `rentID` int(11) NOT NULL AUTO_INCREMENT,
   `duration` decimal(5,2) NOT NULL,
   `totalPrice` decimal(5,2) NOT NULL,
-  `fk_carNo` int(5) NOT NULL,
-  `fk_userID` int(11) NOT NULL,
+  `fk_carNo` int(5) DEFAULT NULL,
+  `fk_userID` int(11) DEFAULT NULL,
   `rentDate` date DEFAULT NULL,
   `rentTime` time DEFAULT NULL,
   `currentlyRented` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`rentID`),
-  KEY `fk_carNo` (`fk_carNo`),
-  KEY `fk_userID` (`fk_userID`),
-  CONSTRAINT `fk_carNo` FOREIGN KEY (`fk_carNo`) REFERENCES `car` (`carNo`),
-  CONSTRAINT `fk_userID` FOREIGN KEY (`fk_userID`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `fk_carNoa` (`fk_carNo`),
+  KEY `fk_userIDa` (`fk_userID`),
+  CONSTRAINT `fk_carNoa` FOREIGN KEY (`fk_carNo`) REFERENCES `car` (`carNo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_userIDa` FOREIGN KEY (`fk_userID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +103,7 @@ CREATE TABLE `rent` (
 
 LOCK TABLES `rent` WRITE;
 /*!40000 ALTER TABLE `rent` DISABLE KEYS */;
-INSERT INTO `rent` VALUES (11,2.00,20.00,3,7,'2021-01-26','19:49:35',0),(12,3.00,90.00,9,8,'2021-01-27','02:51:25',0),(13,2.00,20.00,2,7,'2021-01-30','06:38:29',0),(14,2.00,20.00,7,7,'2021-01-30','11:40:36',0),(15,2.00,20.00,10,7,'2021-02-02','09:03:12',0),(16,3.00,30.00,2,8,'2021-02-03','06:00:55',0),(17,3.00,30.00,3,7,'2021-02-03','07:16:26',0),(18,2.00,20.00,2,7,'2021-02-03','07:46:15',0),(19,2.00,20.00,2,7,'2021-02-03','07:47:03',0),(20,2.00,20.00,3,7,'2021-02-03','07:47:27',0),(21,1.00,30.00,9,7,'2021-02-03','07:53:41',0),(22,1.00,10.00,2,7,'2021-02-03','08:09:56',0),(23,1.00,10.00,2,7,'2021-02-03','08:21:35',1),(24,2.00,40.00,14,6,'2021-02-03','08:59:33',1),(25,4.00,80.00,15,7,'2021-02-03','09:02:35',1);
+INSERT INTO `rent` VALUES (11,2.00,20.00,3,7,'2021-01-26','19:49:35',0),(14,2.00,20.00,7,7,'2021-01-30','11:40:36',0),(15,2.00,20.00,10,7,'2021-02-02','09:03:12',0),(17,3.00,30.00,3,7,'2021-02-03','07:16:26',0),(20,2.00,20.00,3,7,'2021-02-03','07:47:27',0),(21,1.00,30.00,9,7,'2021-02-03','07:53:41',0),(24,2.00,40.00,14,6,'2021-02-03','08:59:33',0),(25,4.00,80.00,15,7,'2021-02-03','09:02:35',0),(26,2.00,20.00,3,9,'2021-02-03','15:32:17',0),(27,4.00,40.00,10,9,'2021-02-03','15:32:34',0),(28,1.00,30.00,9,9,'2021-02-03','15:32:48',0),(29,1.00,20.00,14,10,'2021-02-03','15:35:05',1),(30,1.00,20.00,15,10,'2021-02-03','15:35:11',1);
 /*!40000 ALTER TABLE `rent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +123,7 @@ CREATE TABLE `user` (
   `ic` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +132,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (6,'Putera','Syabil','test123','0123456780','990928146177','putera@example.com'),(7,'Pharveish','Selvam','test1234','0123456781','992810992817','pharveish@example.com'),(8,'Taufiiq','Azman','test1234','0123456789','990101014433','taufiiq@gmail.com');
+INSERT INTO `user` VALUES (6,'Putera','Syabil','test123','0123456780','990928146177','putera@example.com'),(7,'Pharveish','Selvam','test1234','0123456781','992810992817','pharveish@example.com'),(9,'Taufiiq','Azman','test1234','0182736271','990012102233','taufiiq@example.com'),(10,'Raja','Aidid','test123','0123456789','990230012233','aidid@example.com');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,4 +169,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-03  9:07:36
+-- Dump completed on 2021-02-03 15:36:46

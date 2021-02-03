@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/userHistory.jsp</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/controller/AddCarController.java</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/controller/EditCarController.java</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/addCarAdmin.jsp</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/controller/userHistoryController.java</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/editCarAdmin.jsp</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/src/java/DAO/AddCarDAO.java</file>
+            <file>file:/home/pharveish/utm/sem5/ip/SAK-CRS/web/analytics.jsp</file>
+        </group>
     </open-files>
 </project-private>

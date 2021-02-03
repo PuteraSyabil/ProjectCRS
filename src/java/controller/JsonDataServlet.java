@@ -48,6 +48,14 @@ public class JsonDataServlet extends HttpServlet {
         List <RentedBean> pie = getTypePrice();
      
         request.setAttribute("pie", pie);
+        
+        List <RentedBean> custPrice = getCustPrice();
+     
+        request.setAttribute("custPrice", custPrice);
+        
+        List <RentedBean> countDuration = countDuration();
+     
+        request.setAttribute("countDuration", countDuration);
          RequestDispatcher requestDispatcher = request.getRequestDispatcher("/analytics.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -70,6 +78,32 @@ public class JsonDataServlet extends HttpServlet {
             List<RentedBean> rentlist = new ArrayList<RentedBean>();
             RentedCarDAO rentDAO = new RentedCarDAO();
             rentlist = rentDAO.typePrice();
+            
+            return rentlist;
+        } catch (SQLException ex) {
+            Logger.getLogger(JsonDataServlet.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+     
+     private List<RentedBean> getCustPrice(){
+        try {
+            List<RentedBean> rentlist = new ArrayList<RentedBean>();
+            RentedCarDAO rentDAO = new RentedCarDAO();
+            rentlist = rentDAO.custPrice();
+            
+            return rentlist;
+        } catch (SQLException ex) {
+            Logger.getLogger(JsonDataServlet.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+     
+     private List<RentedBean> countDuration(){
+        try {
+            List<RentedBean> rentlist = new ArrayList<RentedBean>();
+            RentedCarDAO rentDAO = new RentedCarDAO();
+            rentlist = rentDAO.countDuration();
             
             return rentlist;
         } catch (SQLException ex) {
