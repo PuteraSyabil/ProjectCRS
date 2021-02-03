@@ -21,6 +21,7 @@
                 <%@include file="nav.jsp" %>
                
                 <div style="margin:100px; margin-top:50px">
+                        <h2>Select your car</h2>
                 <table class="table table-striped table-hover" >
                     <thead class="thead-dark">
                     <tr>

@@ -29,7 +29,7 @@
             <!-- Title -->
   
             <div style="margin:100px; margin-top:50px">
-
+                    <h2>Car on Maintenance</h2>
                 <table class="table table-striped table-hover" >
                     <thead class="thead-dark">
                     <tr>
@@ -40,6 +40,7 @@
                         <th>Time Sent</th>
                         <th>Date Sent</th>
                         <th>Issue</th>
+                        <th>Resolve</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,7 +54,12 @@
                             <td>${car.getTimeSent()}</td>
                             <td>${car.getDateSent()}</td>
                             <td>${car.getIssue()}</td>
-
+                             <td>
+                            <form method="post" action="resolveMaintenance">
+                                            <input type="hidden" name="carNo" value=${car.getFk_carNo()}>
+                                        <button type="submit" class="btn btn-outline-success d-flex justify-content-center align-content-between">Return</button>
+                            </form>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

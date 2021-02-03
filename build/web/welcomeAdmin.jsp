@@ -16,11 +16,11 @@
         <!-- Body -->
         <div class="jumbotron">
             <h1 class="display-4">Welcome, <%=session.getAttribute("login")%> </h1>
-                <p class="lead">This is a website for you to rent cars based on hourly rates. We have different types of cars from different models for you to choose from.</p>
+                <p class="lead">This is a website for you to manage inventory, users, view and analyse transactions</p>
                 <hr class="my-4">
                 <p>Start by simply browsing our car list!</p>
                 <p class="lead">
-                <a class="btn btn-outline-dark btn-lg" href="RentalHistoryController" role="button">View Cars</a>
+                <a class="btn btn-outline-dark btn-lg" href="RentalHistoryController" role="button">Manage Cars</a>
                 </p>
         </div>
     

@@ -25,7 +25,7 @@
         
         
         <div style="margin:100px; margin-top:50px">
-                <h2 class="text-center">My Current Rented Car</h2>
+                <h2>My Current Rented Car</h2>
                 <table class="table table-striped table-hover" >
                     <thead class="thead-dark">
                     <tr>
@@ -35,6 +35,7 @@
                         <th>Rent Date</th>
                         <th>Rent Time</th>
                         <th>Duration</th>
+                       
                     </tr>
                     </thead>
                     <tbody>
@@ -47,6 +48,7 @@
                             <td>${Rent.getRentDate()}</td>
                             <td>${Rent.getRentTime()}</td>
                             <td>${Rent.getDuration()} hours</td>
+                          
                         </tr>
                     </c:forEach>
                     </tbody>

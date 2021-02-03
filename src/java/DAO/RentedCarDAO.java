@@ -32,7 +32,7 @@ public class RentedCarDAO {
             String userName = "root";
 
             String password = "void";
-            String query = "select rent.rentID, rent.duration, rent.totalPrice, rent.rentDate, rent.rentTime, car.model, car.type, car.carNo, car.rentStatus, user.firstname, user.lastname, user.ic from rent join car on rent.fk_carNo=car.carNo join user on rent.fk_userID=user.id;";
+            String query = "select rent.rentID, rent.duration, rent.totalPrice, rent.rentDate, rent.rentTime, car.model, car.type, car.carNo, rent.currentlyRented, user.firstname, user.lastname, user.ic from rent join car on rent.fk_carNo=car.carNo join user on rent.fk_userID=user.id;";
 
             
             Class.forName(driver);
@@ -53,6 +53,35 @@ public class RentedCarDAO {
                 rentdetail.setFirstname(rs.getString(10));
                 rentdetail.setLastname(rs.getString(11));
                 rentdetail.setIc(rs.getString(12));
+                rentlist.add(rentdetail);
+            }
+            return rentlist;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CarListDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+       
+     public ArrayList<RentedBean> typePrice() throws SQLException {
+        try {
+            ArrayList<RentedBean> rentlist = new ArrayList<RentedBean>();
+            String driver = "com.mysql.jdbc.Driver";
+            String dbName = "CRS_project";
+            String url = "jdbc:mysql://localhost/"+dbName+"?";
+            String userName = "root";
+
+            String password = "void";
+            String query = "select  car.type, sum(rent.totalPrice) from rent join car on rent.fk_carNo=car.carNo group by car.type;";
+
+            
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection(url, userName, password);
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                RentedBean rentdetail = new RentedBean();
+                rentdetail.setType2(rs.getString(1));
+                rentdetail.setTotalPrice2(rs.getDouble(2));
                 rentlist.add(rentdetail);
             }
             return rentlist;

@@ -44,7 +44,7 @@
                         <th>Image</th>
                         <th>Edit</th>
                         <th>Delete</th>
-                        <th>Maintenance</th>
+                     
                     </tr>
                     </thead>
                     <tbody>
@@ -71,14 +71,7 @@
                                         <button type="submit" class="btn btn-outline-danger d-flex justify-content-center align-content-between"><span class="material-icons">delete</span>Delete</button>
                                     </form>
                             </td>
-                            <td>
-                                    <form method="post" action="maintenanceAdmin.jsp">
-                                            <input type="hidden" name="carNo" value=${Car.getCarNo()}>
-                                            <input type="hidden" name="model" value=${Car.getModel()}>
-                                            <input type="hidden" name="type" value=${Car.getType()}>
-                                        <button type="submit" class="btn btn-outline-warning d-flex justify-content-center align-content-between"><span class="material-icons">settings</span>Maintenance</button>
-                                    </form>
-                            </td>
+                          
                         </tr>
                     </c:forEach>
                     </tbody>

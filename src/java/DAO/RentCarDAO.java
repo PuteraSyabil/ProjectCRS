@@ -60,6 +60,16 @@ public class RentCarDAO {
             pstmt.close();
             pstmt2.close();
             
+            PreparedStatement pstmt3 = null;
+            pstmt3=con.prepareStatement("update rent set currentlyRented=true order by rentID desc limit 1;");
+      
+            
+            
+            
+            pstmt3.executeUpdate();
+          
+            pstmt3.close();
+            
             con.close();
             return "SUCCESS RENT CAR";
             

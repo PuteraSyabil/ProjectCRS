@@ -11,6 +11,10 @@
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                 <title>JSP Page</title>
                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+                 
         </head>
         <body>
                    <%
@@ -33,16 +37,31 @@
                           <a class="nav-link" href="ManageUserController">Manage Users</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="CurrentlyRentedAdminController">Currently on Rent</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="RentedListController">Rental History</a>
-                        </li>
-                        <li class="nav-item">
                           <a class="nav-link" href="RentalHistoryController">Manage Car</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Rent
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="CurrentlyRentedAdminController">Currently being Rented</a>
+                              <a class="dropdown-item" href="RentedListController">Rental History</a>
+                              
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Maintenance
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="SendMaintenanceController">Send for Maintenance</a>
+                              <a class="dropdown-item" href="viewMaintenanceController">Car on Maintenance</a>
+                              
+                            </div>
+                        </li>
+                        
                         <li class="nav-item">
-                          <a class="nav-link" href="viewMaintenanceController">Car on Maintenance</a>
+                          <a class="nav-link" href="JsonDataServlet">Analytics</a>
                         </li>
                         
                         

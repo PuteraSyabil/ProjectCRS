@@ -40,7 +40,7 @@ public class CurrentRentedDAO {
             Connection con = DriverManager.getConnection(url,uname,pass);
             PreparedStatement pstmt = null;
             
-            pstmt = con.prepareStatement("select car.carNo, car.model, car.filename, rent.rentDate, rent.rentTime, rent.duration from rent join car on rent.fk_carNo=car.carNo where car.rentStatus=true and rent.fk_userID=?");
+            pstmt = con.prepareStatement("select  car.carNo, car.model, car.filename, rent.rentDate, rent.rentTime, rent.duration from rent join car on rent.fk_carNo=car.carNo where rent.currentlyRented=true and rent.fk_userID=?");
             
             pstmt.setInt(1,LoginID);
             ResultSet rs = pstmt.executeQuery();
@@ -53,6 +53,54 @@ public class CurrentRentedDAO {
                 rent.setRentDate(rs.getString(4));
                 rent.setRentTime(rs.getString(5));
                 rent.setDuration(rs.getDouble(6));
+    
+                carlist.add(rent);
+            }
+            pstmt.close();
+            con.close();
+            return carlist;
+            
+            }
+                  
+                catch (ClassNotFoundException ex) 
+                {
+                Logger.getLogger(CarListDAO.class.getName()).log(Level.SEVERE, null, ex);
+                return null;
+                }
+            
+           
+            
+            
+        }
+     
+     public ArrayList<RentedBean> getCarListHistory(int LoginID) throws SQLException {
+        
+        ArrayList<RentedBean> carlist = new ArrayList<RentedBean>();
+        String uname="root";
+        String pass = "void";
+        String url = "jdbc:mysql://localhost:3306/CRS_project";
+    
+        
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url,uname,pass);
+            PreparedStatement pstmt = null;
+            
+            pstmt = con.prepareStatement("select car.carNo, car.model, car.filename, rent.rentDate, rent.rentTime, rent.duration, rent.currentlyRented from rent join car on rent.fk_carNo=car.carNo where  rent.fk_userID=? order by rent.rentID asc;");
+            
+            pstmt.setInt(1,LoginID);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                RentedBean rent= new RentedBean();
+                rent.setCarNo(rs.getInt(1));
+                rent.setModel(rs.getString(2));
+                rent.setFilename(rs.getString(3));
+                rent.setRentDate(rs.getString(4));
+                rent.setRentTime(rs.getString(5));
+                rent.setDuration(rs.getDouble(6));
+                rent.setRentStatus(rs.getBoolean(7));
                 carlist.add(rent);
             }
             pstmt.close();
