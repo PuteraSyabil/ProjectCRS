@@ -13,10 +13,27 @@ import java.text.SimpleDateFormat;
  * @author pharveish
  */
 public class RentedBean {
-    private int rentID, carNo;
-    private double duration, totalPrice;
-    private String rentDate, rentTime, model, type, firstname, lastname, ic, filename;
+    private int rentID, carNo; 
+    private double duration, totalPrice, totalPrice2;
+    private String rentDate, rentTime, model, type, firstname, lastname, ic, filename, type2;
     private boolean rentStatus;
+
+    public String getType2() {
+        return type2;
+    }
+
+    public void setType2(String type2) {
+        this.type2 = type2;
+    }
+
+    
+    public double getTotalPrice2() {
+        return totalPrice2;
+    }
+
+    public void setTotalPrice2(double totalPrice2) {
+        this.totalPrice2 = totalPrice2;
+    }
 
     public boolean isRentStatus() {
         return rentStatus;

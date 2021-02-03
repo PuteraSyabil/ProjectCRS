@@ -45,6 +45,68 @@ public class ReturnCarDAO {
             
             pstmt.close();
             
+            pstmt=con.prepareStatement("update rent set currentlyRented=false where fk_carNo=?");
+            pstmt.setString(1, carNo);
+        
+            
+            
+            pstmt.executeUpdate();
+            
+            pstmt.close();
+            
+            con.close();
+            return "SUCCESS RETURN CAR";
+            
+            
+        }
+        catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+        
+        
+        return "FAIL RETURN CAR";
+    }
+     
+      public String resolveMaintenance(Car car)
+    {
+        String carNo= String.valueOf(car.getCarNo());
+        
+       
+     
+        
+        String url = "jdbc:mysql://localhost:3306/CRS_project";
+        String uname="root";
+        String pass = "void";
+        
+        
+        
+        try
+        {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url,uname,pass);
+            
+            PreparedStatement pstmt = null;
+            
+            pstmt=con.prepareStatement("update car set maintenance=false where carNo=?");
+            pstmt.setString(1, carNo);
+        
+            
+            
+            pstmt.executeUpdate();
+            
+            pstmt.close();
+            
+            pstmt=con.prepareStatement("delete from maintenance where fk_carNo=?");
+            pstmt.setString(1, carNo);
+        
+            
+            
+            pstmt.executeUpdate();
+            
+            pstmt.close();
+            
             con.close();
             return "SUCCESS RETURN CAR";
             

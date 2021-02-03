@@ -39,7 +39,7 @@ public class RentalHistoryController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             CarListDAO carlistDAO = new CarListDAO();
-            ArrayList<Car> carlist = carlistDAO.getCarList();
+            ArrayList<Car> carlist = carlistDAO.getAdminCarList();
             request.setAttribute("carlist", carlist);
             request.getRequestDispatcher("/manageCarAdmin.jsp").forward(request, response);
             

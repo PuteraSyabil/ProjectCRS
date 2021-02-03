@@ -36,6 +36,13 @@
                         </div>
                     </div>
                     
+                     <div class="form-group row">
+                      <label for="file" class="col-sm-2 col-form-label">Car Image</label>
+                        <div class="col-sm-10">
+                            <input type="file"  name="file" required>
+                        </div>
+                    </div>
+                    
                     <button type="submit" name="btn_addcar" class="btn btn-outline-success mb-2">Add Car</button>
                   </form>
                 </div>

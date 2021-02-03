@@ -29,7 +29,7 @@ public class CurrentlyRentedAdminDAO {
             String userName = "root";
 
             String password = "void";
-            String query = "select rent.rentID, rent.duration, rent.totalPrice, rent.rentDate, rent.rentTime, car.model, car.type, car.carNo, user.firstname, user.lastname, user.ic from car join rent on rent.fk_carNo=car.carNo join user on rent.fk_userID=user.id where car.rentStatus=true;";
+            String query = "select rent.rentID, rent.duration, rent.totalPrice, rent.rentDate, rent.rentTime, car.model, car.type, car.carNo, user.firstname, user.lastname, user.ic from car join rent on rent.fk_carNo=car.carNo join user on rent.fk_userID=user.id where rent.currentlyRented=true;";
 
             
             Class.forName(driver);

@@ -17,6 +17,7 @@
 
         <link rel="stylesheet" href="css/rentalHistory.css">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
         <title>Rented Cars </title>
     </head>
     <body class="bg-light">
@@ -71,8 +72,10 @@
                             <td colspan="11"><b>Total Earnings</b></td>
                             <td>RM${total}</td>
                         </tr>
+                        
                     </tbody>
                 </table>
             </div> 
+              
     </body>
 </html>

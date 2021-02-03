@@ -25,9 +25,10 @@
         <%@include file="navAdmin.jsp" %>
             <!-- Title -->
             <div class="title1">
-                <h4> Manage User </h4>
+               
             </div>
             <div style="margin:100px; margin-top:50px">
+                     <h2> Manage User </h2>
                 <table class="table table-dark table-striped" >
                     <form action="ManageUserController" method="post">
                     <tr>

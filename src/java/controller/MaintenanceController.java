@@ -68,7 +68,7 @@ public class MaintenanceController extends HttpServlet {
             if(carMaintenance.equals("maintenanceSuccess")) //check calling authorizeRegister() function receive "SUCCESS REGISTER" string message after redirect to index.jsp page
             {
                 request.setAttribute("maintainCar",carMaintenance); //apply register successfully message "RegiseterSuccessMsg"
-                RequestDispatcher rd=request.getRequestDispatcher("welcomeAdmin.jsp"); //redirect to index.jsp page
+                RequestDispatcher rd=request.getRequestDispatcher("viewMaintenanceController"); //redirect to index.jsp page
                 rd.forward(request, response);
             }
             else if(carMaintenance.equals("maintenanceFail"))

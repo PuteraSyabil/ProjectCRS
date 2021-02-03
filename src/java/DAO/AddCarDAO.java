@@ -17,7 +17,8 @@ public class AddCarDAO {
         String model= car.getModel();
         String type=car.getType();
         String dateReceived = car.getDateReceived();
-       
+        String filename=car.getFile();
+        String path=car.getPath();
      
         
         String url = "jdbc:mysql://localhost:3306/CRS_project";
@@ -34,11 +35,12 @@ public class AddCarDAO {
             
             PreparedStatement pstmt = null;
             
-            pstmt=con.prepareStatement("insert into car(model, type, dateReceived) values(?,?,?)");
+            pstmt=con.prepareStatement("insert into car(model, type, dateReceived, filename, path) values(?,?,?,?,?)");
             pstmt.setString(1, model);
             pstmt.setString(2, type);
             pstmt.setString(3, dateReceived);
-            
+            pstmt.setString(4, filename);
+            pstmt.setString(5, path);
             
             pstmt.executeUpdate();
             

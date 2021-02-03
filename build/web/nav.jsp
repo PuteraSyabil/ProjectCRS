@@ -37,7 +37,10 @@
                           <a class="nav-link" href="ToRentController">Rent Now</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="ViewCurrentRentedController">Current Rented Car</a>
+                          <a class="nav-link" href="ViewCurrentRentedController">Current Rent</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="userHistoryController">Rent History</a>
                         </li>
                         
                       </ul>
